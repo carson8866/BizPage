@@ -1436,7 +1436,7 @@
           https://js.hcaptcha.com/1/api.js?render=YOUR_HCAPTCHA_SITE_KEY
         - 并把下方 execute 回调中的站点密钥替换为 hCaptcha 的 Site Key。
      ================================================================ -->
-<script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcT34EtAAAAAHsfeUtqlqL8vAcTUs3t3oNtGxlF"></script>
 <script>
   // 表单提交前：等待 reCAPTCHA v3 在后台生成令牌，填入隐藏字段后再真正提交
   document.addEventListener('DOMContentLoaded', function () {
@@ -1449,7 +1449,7 @@
       if (!window.grecaptcha) { form.submit(); return; } // 降级：reCAPTCHA 未加载时直接提交
       grecaptcha.ready(function () {
         // 执行无感验证（第二个参数 action 仅用于后台统计，可自定义）
-        grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', { action: 'submit' }).then(function (token) {
+        grecaptcha.execute('6LcT34EtAAAAAHsfeUtqlqL8vAcTUs3t3oNtGxlF', { action: 'submit' }).then(function (token) {
           // 把令牌写入隐藏字段，Formspree 收到后会用它做服务端校验
           document.getElementById('g-recaptcha-response').value = token;
           form.submit();
