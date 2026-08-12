@@ -14,7 +14,6 @@
 
   <!-- ===== 字体优化：移除 Google Fonts，改用系统原生字体（国内秒开） ===== -->
   <style>
-    /* 手动指定字体回退方案，不再加载外部字体文件 */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     }
@@ -23,28 +22,27 @@
     }
   </style>
 
-  <!-- Vendor CSS Files (替换为国内可用的 CDN，提速效果明显) -->
+  <!-- ===== 预加载关键 CSS（解决渲染阻塞，预计缩短 2.6s） ===== -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style">
+  <link rel="preload" href="assets/css/main.css" as="style">
+
+  <!-- Vendor CSS Files -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Font Awesome 6 CDN（联系表单/联系信息卡片的图标） -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-
-  <!-- Main CSS File (BizPage template - kept intact) -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- ========================================================
-  * Template Name: BizPage (kept intact - CSS/JS/animations untouched)
-  * Modified for: BDBRIM - OEM & Custom Hat Manufacturer
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
-  <!-- BDBRIM Custom Styles (added on top of the template, no template file changed) -->
+  <!-- BDBRIM Custom Styles -->
   <style>
-  /* ---------- BDBRIM brand tone: professional blue on light background ---------- */
+  /* ---------- BDBRIM brand tone ---------- */
 :root {
   --accent-color: #1a73e8;
   --nav-hover-color: #1a73e8;
@@ -52,7 +50,7 @@
 }
 .header .logo img { max-height: 38px; margin-right: 10px; }
 
-/* ---------- Product Cards: square thumbnail + hover zoom + Inquiry ---------- */
+/* ---------- Product Cards ---------- */
 .products .product-card { background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; overflow: hidden; height: 100%; transition: box-shadow .3s ease, transform .3s ease; }
 .products .product-card:hover { box-shadow: 0 14px 34px rgba(0,0,0,.12); transform: translateY(-5px); }
 .products .product-img { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #f2f5f9; }
@@ -69,7 +67,7 @@
 .products .product-info p { font-size: 13px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--default-color), transparent 25%); }
 @media (max-width: 575px) { .products .product-info p { font-size: 12px; } }
 
-/* ---------- How We Work: 2 columns desktop/tablet, stacked on mobile ---------- */
+/* ---------- How We Work ---------- */
 .process-card { display: flex; gap: 20px; align-items: flex-start; background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 24px; height: 100%; box-shadow: 0 6px 18px rgba(0,0,0,.05); transition: .3s; }
 .process-card:hover { box-shadow: 0 14px 30px rgba(0,0,0,.1); transform: translateY(-3px); }
 .process-card .process-img { position: relative; flex-shrink: 0; width: 150px; height: 150px; border-radius: 10px; overflow: hidden; }
@@ -78,6 +76,7 @@
 .process-card h4 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--heading-color); }
 .process-card p { font-size: 14px; margin: 0; color: color-mix(in srgb, var(--default-color), transparent 20%); }
 @media (max-width: 575px) { .process-card { flex-direction: column; } .process-card .process-img { width: 100%; height: auto; aspect-ratio: 16/9; } }
+
 /* ---------- Factory stats + gallery ---------- */
 .factory-stats .factory-stat { text-align: center; background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 34px 20px; box-shadow: 0 6px 18px rgba(0,0,0,.05); height: 100%; }
 .factory-stats .factory-stat .stat-num { font-size: 46px; font-weight: 700; color: var(--accent-color); font-family: var(--heading-font); line-height: 1; }
@@ -87,7 +86,7 @@
 .factory-gallery .factory-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .factory-gallery .factory-img:hover img { transform: scale(1.06); }
 
-/* ---------- Review cards (extracted testimonials) ---------- */
+/* ---------- Review cards ---------- */
 .review-card { background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 26px 22px; height: 100%; box-shadow: 0 6px 18px rgba(0,0,0,.05); display: flex; flex-direction: column; }
 .review-card .review-quote { font-size: 32px; line-height: 0; color: color-mix(in srgb, var(--accent-color), transparent 45%); margin-bottom: 14px; }
 .review-card .stars { color: #ffc107; font-size: 14px; margin-bottom: 12px; }
@@ -101,7 +100,8 @@
 /* ---------- Floating WhatsApp button ---------- */
 .wa-float { position: fixed; bottom: 24px; left: 24px; z-index: 999; width: 54px; height: 54px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 6px 18px rgba(37,211,102,.45); transition: .3s; }
 .wa-float:hover { transform: translateY(-4px); color: #fff; background: #1ebe5b; }
-/* ---------- Customization & Decoration cards ---------- */
+
+/* ---------- Customization cards ---------- */
 .decor-item { background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 26px 22px; height: 100%; box-shadow: 0 6px 18px rgba(0,0,0,.05); transition: .3s; }
 .decor-item:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.1); }
 .decor-item .icon { font-size: 36px; line-height: 0; color: var(--accent-color); margin-bottom: 14px; }
@@ -135,14 +135,14 @@
 .btn-wa { background: #25d366; color: #fff; font-weight: 600; border-radius: 50px; padding: 12px 20px; margin-top: 8px; }
 .btn-wa:hover { background: #1ebe5b; color: #fff; }
 
-/* ---------- Static hero (single background, no carousel) ---------- */
+/* ---------- Static hero ---------- */
 .hero { min-height: 100vh; overflow: hidden; }
 .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .hero .hero-overlay { position: absolute; inset: 0; background: rgba(6, 6, 6, 0.45); z-index: 2; }
 .hero .hero-content { position: absolute; inset: 90px 64px 64px 64px; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; z-index: 3; }
 @media (max-width: 575px) { .hero .hero-content { inset: 80px 20px 20px 20px; } }
 
-/* ---------- Mobile / size fine-tuning ---------- */
+/* ---------- Mobile fine-tuning ---------- */
 @media (max-width: 575px) {
   .header .logo img { max-height: 30px; }
   .header .logo h1 { font-size: 23px; }
@@ -174,13 +174,10 @@
 
   <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
     <a href="index.html" class="logo d-flex align-items-center">
-      <!-- Logo source: images/logo/xinlogo-removebg-preview.png -->
       <img src="assets/img/logo/logo-white.png" alt="BDBRIM logo">
       <h1 class="sitename">BDBRIM</h1>
     </a>
-
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="#hero" class="active">Home</a></li>
@@ -194,34 +191,27 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-
   </div>
 </header>
 
   <main class="main">
 
-    <!-- Hero Section — single full-screen background, source: assets/img/banner/3.jpg -->
+    <!-- Hero Section -->
 <section id="hero" class="hero section dark-background">
-
   <img src="assets/img/banner/3.jpg" alt="BDBRIM custom cap factory - hero banner">
   <div class="hero-overlay"></div>
-
   <div class="hero-content">
     <h2>OEM &amp; ODM Custom Hat Manufacturer</h2>
     <p>Factory-direct customized caps from our own facility in Baoding, China. MOQ 50 pcs, free digital mockup in 24 hours, physical sample in 7 days, full production in 15 days.</p>
     <a href="#products" class="btn-get-started">Explore Our Products</a>
     <a href="#contact" class="btn-get-started">Get A Free Quote</a>
   </div>
+</section>
 
-</section><!-- /Hero Section -->
-
-    <!-- Featured Services Section — core advantages with icons -->
+    <!-- Featured Services Section -->
 <section id="featured-services" class="featured-services section">
-
   <div class="container">
-
     <div class="row gy-4">
-
       <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
         <div class="icon flex-shrink-0"><i class="bi bi-buildings"></i></div>
         <div>
@@ -230,7 +220,6 @@
           <a href="#products" class="readmore stretched-link"><span>See Products</span><i class="bi bi-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
         <div class="icon flex-shrink-0"><i class="bi bi-box-seam"></i></div>
         <div>
@@ -239,7 +228,6 @@
           <a href="#contact" class="readmore stretched-link"><span>Get A Quote</span><i class="bi bi-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
         <div class="icon flex-shrink-0"><i class="bi bi-palette"></i></div>
         <div>
@@ -248,44 +236,29 @@
           <a href="#contact" class="readmore stretched-link"><span>Start Free</span><i class="bi bi-arrow-right"></i></a>
         </div>
       </div>
-
     </div>
-
   </div>
+</section>
 
-</section><!-- /Featured Services Section -->
-
-<!-- Trust Band — quick trust signals for B2B buyers -->
+<!-- Trust Band -->
 <section class="trust-band">
   <div class="container">
     <div class="row gy-3">
-      <div class="col-lg col-md-4 col-6">
-        <div class="trust-item"><i class="bi bi-patch-check"></i> Alibaba Trade Assurance</div>
-      </div>
-      <div class="col-lg col-md-4 col-6">
-        <div class="trust-item"><i class="bi bi-shield-check"></i> SGS Inspected Factory</div>
-      </div>
-      <div class="col-lg col-md-4 col-6">
-        <div class="trust-item"><i class="bi bi-graph-up-arrow"></i> 50M+ Caps Produced</div>
-      </div>
-      <div class="col-lg col-md-4 col-6">
-        <div class="trust-item"><i class="bi bi-airplane"></i> DHL / FedEx / UPS</div>
-      </div>
-      <div class="col-lg col-md-4 col-6">
-        <div class="trust-item"><i class="bi bi-clock-history"></i> 15-Day Delivery</div>
-      </div>
+      <div class="col-lg col-md-4 col-6"><div class="trust-item"><i class="bi bi-patch-check"></i> Alibaba Trade Assurance</div></div>
+      <div class="col-lg col-md-4 col-6"><div class="trust-item"><i class="bi bi-shield-check"></i> SGS Inspected Factory</div></div>
+      <div class="col-lg col-md-4 col-6"><div class="trust-item"><i class="bi bi-graph-up-arrow"></i> 50M+ Caps Produced</div></div>
+      <div class="col-lg col-md-4 col-6"><div class="trust-item"><i class="bi bi-airplane"></i> DHL / FedEx / UPS</div></div>
+      <div class="col-lg col-md-4 col-6"><div class="trust-item"><i class="bi bi-clock-history"></i> 15-Day Delivery</div></div>
     </div>
   </div>
 </section>
 
     <!-- About Section -->
 <section id="about" class="about section">
-
   <div class="container section-title" data-aos="fade-up">
     <h2>About BDBRIM</h2>
     <p>Your dedicated custom cap factory in the heart of China's headwear industry</p>
   </div>
-
   <div class="container">
     <div class="row gy-4">
       <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
@@ -302,93 +275,35 @@
       </div>
       <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
         <div class="row gy-4">
-          <div class="col-lg-6">
-            <img src="assets/img/factory/1.jpg" class="img-fluid" alt="BDBRIM factory cutting workshop" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <img src="assets/img/factory/2.jpg" class="img-fluid" alt="BDBRIM factory sewing line" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <img src="assets/img/factory/4.jpg" class="img-fluid" alt="BDBRIM embroidery department" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <img src="assets/img/factory/5.jpg" class="img-fluid" alt="BDBRIM factory quality control" loading="lazy">
-          </div>
+          <div class="col-lg-6"><img src="assets/img/factory/1.jpg" class="img-fluid" alt="BDBRIM factory cutting workshop" loading="lazy"></div>
+          <div class="col-lg-6"><img src="assets/img/factory/2.jpg" class="img-fluid" alt="BDBRIM factory sewing line" loading="lazy"></div>
+          <div class="col-lg-6"><img src="assets/img/factory/4.jpg" class="img-fluid" alt="BDBRIM embroidery department" loading="lazy"></div>
+          <div class="col-lg-6"><img src="assets/img/factory/5.jpg" class="img-fluid" alt="BDBRIM factory quality control" loading="lazy"></div>
         </div>
       </div>
     </div>
   </div>
-</section><!-- /About Section -->
+</section>
 
     <!-- Services Section -->
 <section id="services" class="services section">
-
   <div class="container section-title" data-aos="fade-up">
     <h2>What We Offer</h2>
     <p>Full-stack custom cap manufacturing — from your first sketch to the final shipment</p>
   </div>
-
   <div class="container">
     <div class="row gy-4">
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-gear icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#products" class="stretched-link">OEM & ODM Manufacturing</a></h4>
-            <p class="description">We manufacture to your design or develop new styles from your concept — fabric, fit, structure and finish fully customized.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-vector-pen icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#products" class="stretched-link">Embroidery & Custom Printing</a></h4>
-            <p class="description">Flat embroidery, 3D puff, woven labels, screen printing and heat transfer — the right decoration for every budget and design.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-stopwatch icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#contact" class="stretched-link">Fast Sampling, MOQ 50</a></h4>
-            <p class="description">Free digital mockup in 24 hours and a physical sample within 7 days. Minimum order just 50 pieces per style.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-award icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#factory" class="stretched-link">Strict Quality Control</a></h4>
-            <p class="description">Every batch is inspected 3 times — pre-production, in-line and final — before shipping to guarantee consistent quality.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-truck icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#faq" class="stretched-link">Global Logistics & Delivery</a></h4>
-            <p class="description">15-day production lead time with DHL, FedEx, UPS and sea freight options. We ship to 40+ countries worldwide.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
-        <div class="service-item d-flex position-relative h-100">
-          <i class="bi bi-headset icon flex-shrink-0"></i>
-          <div>
-            <h4 class="title"><a href="#contact" class="stretched-link">Dedicated Customer Support</a></h4>
-            <p class="description">Your personal account manager answers within 12 hours — quotes, samples, production updates and after-sales support.</p>
-          </div>
-        </div>
-      </div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-item d-flex position-relative h-100"><i class="bi bi-gear icon flex-shrink-0"></i><div><h4 class="title"><a href="#products" class="stretched-link">OEM & ODM Manufacturing</a></h4><p class="description">We manufacture to your design or develop new styles from your concept — fabric, fit, structure and finish fully customized.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-item d-flex position-relative h-100"><i class="bi bi-vector-pen icon flex-shrink-0"></i><div><h4 class="title"><a href="#products" class="stretched-link">Embroidery & Custom Printing</a></h4><p class="description">Flat embroidery, 3D puff, woven labels, screen printing and heat transfer — the right decoration for every budget and design.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="service-item d-flex position-relative h-100"><i class="bi bi-stopwatch icon flex-shrink-0"></i><div><h4 class="title"><a href="#contact" class="stretched-link">Fast Sampling, MOQ 50</a></h4><p class="description">Free digital mockup in 24 hours and a physical sample within 7 days. Minimum order just 50 pieces per style.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400"><div class="service-item d-flex position-relative h-100"><i class="bi bi-award icon flex-shrink-0"></i><div><h4 class="title"><a href="#factory" class="stretched-link">Strict Quality Control</a></h4><p class="description">Every batch is inspected 3 times — pre-production, in-line and final — before shipping to guarantee consistent quality.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="500"><div class="service-item d-flex position-relative h-100"><i class="bi bi-truck icon flex-shrink-0"></i><div><h4 class="title"><a href="#faq" class="stretched-link">Global Logistics & Delivery</a></h4><p class="description">15-day production lead time with DHL, FedEx, UPS and sea freight options. We ship to 40+ countries worldwide.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="600"><div class="service-item d-flex position-relative h-100"><i class="bi bi-headset icon flex-shrink-0"></i><div><h4 class="title"><a href="#contact" class="stretched-link">Dedicated Customer Support</a></h4><p class="description">Your personal account manager answers within 12 hours — quotes, samples, production updates and after-sales support.</p></div></div></div>
     </div>
   </div>
-</section><!-- /Services Section -->
+</section>
 
-    <!-- Call To Action Section — background image source: assets/img/factory/5.jpg -->
+    <!-- Call To Action Section -->
 <section id="call-to-action" class="call-to-action section dark-background">
   <img src="assets/img/factory/5.jpg" alt="" loading="lazy">
   <div class="container">
@@ -403,16 +318,14 @@
       </div>
     </div>
   </div>
-</section><!-- /Call To Action Section -->
+</section>
 
-    <!-- Products Section (Our Products) — product images source: images/products/ -->
+    <!-- Products Section -->
 <section id="products" class="portfolio products section">
-
   <div class="container section-title" data-aos="fade-up">
     <h2>Our Products</h2>
     <p>10 cap categories, 40+ styles produced in-house. Every style is fully customizable — logo, fabric, colors and fit.</p>
   </div>
-
   <div class="container">
     <div class="isotope-layout" data-default-filter="*" data-layout="fitRows" data-sort="original-order">
       <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
@@ -431,349 +344,69 @@
       <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
         <!-- 5-Panel Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/5panel hat/IMG_0244.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0244.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/5panel hat/IMG_0245.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0245.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/5panel hat/IMG_0243.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0243.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/5panel hat/IMG_0240.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0240.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel"><div class="product-card"><div class="product-img"><img src="assets/img/products/5panel hat/IMG_0244.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0244.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel"><div class="product-card"><div class="product-img"><img src="assets/img/products/5panel hat/IMG_0245.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0245.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel"><div class="product-card"><div class="product-img"><img src="assets/img/products/5panel hat/IMG_0243.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0243.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-5panel"><div class="product-card"><div class="product-img"><img src="assets/img/products/5panel hat/IMG_0240.JPG" class="img-fluid" alt="Custom 5-panel cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/5panel hat/IMG_0240.JPG" class="glightbox preview-link" data-gallery="g-5panel" title="5-Panel Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>5-Panel Caps</h4><p>Lightweight 5-panel caps for outdoor, camping and travel brands.</p></div></div></div>
 
         <!-- Baseball Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Baseball Cap/3.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Baseball Cap/3.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Baseball Cap/5.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Baseball Cap/5.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Baseball Cap/6.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Baseball Cap/6.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Baseball Cap/7.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Baseball Cap/7.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball"><div class="product-card"><div class="product-img"><img src="assets/img/products/Baseball Cap/3.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Baseball Cap/3.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball"><div class="product-card"><div class="product-img"><img src="assets/img/products/Baseball Cap/5.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Baseball Cap/5.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball"><div class="product-card"><div class="product-img"><img src="assets/img/products/Baseball Cap/6.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Baseball Cap/6.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-baseball"><div class="product-card"><div class="product-img"><img src="assets/img/products/Baseball Cap/7.jpg" class="img-fluid" alt="Custom baseball cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Baseball Cap/7.jpg" class="glightbox preview-link" data-gallery="g-baseball" title="Baseball Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Baseball Caps</h4><p>The classic structured baseball cap — the foundation of every cap collection.</p></div></div></div>
 
         <!-- Beanies -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Beanie/2.png" class="img-fluid" alt="Custom knit beanie" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Beanie/2.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Beanie/4.png" class="img-fluid" alt="Custom knit beanie" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Beanie/4.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Beanie/3.png" class="img-fluid" alt="Custom knit beanie" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Beanie/3.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Beanie/1.png" class="img-fluid" alt="Custom knit beanie" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Beanie/1.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie"><div class="product-card"><div class="product-img"><img src="assets/img/products/Beanie/2.png" class="img-fluid" alt="Custom knit beanie" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Beanie/2.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie"><div class="product-card"><div class="product-img"><img src="assets/img/products/Beanie/4.png" class="img-fluid" alt="Custom knit beanie" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Beanie/4.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie"><div class="product-card"><div class="product-img"><img src="assets/img/products/Beanie/3.png" class="img-fluid" alt="Custom knit beanie" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Beanie/3.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-beanie"><div class="product-card"><div class="product-img"><img src="assets/img/products/Beanie/1.png" class="img-fluid" alt="Custom knit beanie" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Beanie/1.png" class="glightbox preview-link" data-gallery="g-beanie" title="Beanie"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Beanies</h4><p>Cozy knit beanies that make winter branding wearable and warm.</p></div></div></div>
 
         <!-- Bucket Hats -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0162.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0162.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0161.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0161.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0156.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0156.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0160.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0160.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket"><div class="product-card"><div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0162.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0162.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket"><div class="product-card"><div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0161.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0161.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket"><div class="product-card"><div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0156.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0156.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-bucket"><div class="product-card"><div class="product-img"><img src="assets/img/products/Bucket Hat/IMG_0160.JPG" class="img-fluid" alt="Custom bucket hat" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Bucket Hat/IMG_0160.JPG" class="glightbox preview-link" data-gallery="g-bucket" title="Bucket Hat"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Bucket Hats</h4><p>Street-ready bucket hats in cotton, denim and tech fabrics.</p></div></div></div>
 
         <!-- Dad Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/dad cap/10.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/dad cap/10.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/dad cap/9.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/dad cap/9.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/dad cap/12.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/dad cap/12.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/dad cap/13.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/dad cap/13.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad"><div class="product-card"><div class="product-img"><img src="assets/img/products/dad cap/10.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/dad cap/10.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad"><div class="product-card"><div class="product-img"><img src="assets/img/products/dad cap/9.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/dad cap/9.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad"><div class="product-card"><div class="product-img"><img src="assets/img/products/dad cap/12.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/dad cap/12.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dad"><div class="product-card"><div class="product-img"><img src="assets/img/products/dad cap/13.jpg" class="img-fluid" alt="Custom dad cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/dad cap/13.jpg" class="glightbox preview-link" data-gallery="g-dad" title="Dad Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dad Caps</h4><p>Unstructured dad caps with a relaxed, vintage-curve feel.</p></div></div></div>
 
         <!-- Dance Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0314.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0314.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0315.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0315.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0299.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0299.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0308.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0308.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance"><div class="product-card"><div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0314.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0314.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance"><div class="product-card"><div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0315.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0315.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance"><div class="product-card"><div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0299.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0299.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-dance"><div class="product-card"><div class="product-img"><img src="assets/img/products/Dance Cap (Snapback)/IMG_0308.JPG" class="img-fluid" alt="Custom dance snapback cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Dance Cap (Snapback)/IMG_0308.JPG" class="glightbox preview-link" data-gallery="g-dance" title="Dance Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Dance Caps</h4><p>Snapback dance caps with clean panels made for bold logos.</p></div></div></div>
 
         <!-- Flat Brim Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0264.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0264.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0266.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0266.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0270.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0270.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0265.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0265.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim"><div class="product-card"><div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0264.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0264.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim"><div class="product-card"><div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0266.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0266.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim"><div class="product-card"><div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0270.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0270.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-flatbrim"><div class="product-card"><div class="product-img"><img src="assets/img/products/Flat Brim Cap/IMG_0265.JPG" class="img-fluid" alt="Custom flat brim snapback" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Flat Brim Cap/IMG_0265.JPG" class="glightbox preview-link" data-gallery="g-flatbrim" title="Flat Brim Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Flat Brim Caps</h4><p>Flat-brim snapbacks with a modern, streetwear silhouette.</p></div></div></div>
 
         <!-- Golf Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5970.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5970.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5971.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5971.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5972.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5972.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5969.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5969.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf"><div class="product-card"><div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5970.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5970.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf"><div class="product-card"><div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5971.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5971.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf"><div class="product-card"><div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5972.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5972.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-golf"><div class="product-card"><div class="product-img"><img src="assets/img/products/Golf Cap (Laser Perforated)/IMG_5969.JPG" class="img-fluid" alt="Custom laser perforated golf cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Golf Cap (Laser Perforated)/IMG_5969.JPG" class="glightbox preview-link" data-gallery="g-golf" title="Golf Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Golf Caps</h4><p>Laser-perforated golf caps engineered for airflow and comfort.</p></div></div></div>
 
         <!-- Trucker Caps -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0430.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0430.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0431.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0431.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0427.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0427.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0428.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0428.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker"><div class="product-card"><div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0430.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0430.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker"><div class="product-card"><div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0431.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0431.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker"><div class="product-card"><div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0427.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0427.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-trucker"><div class="product-card"><div class="product-img"><img src="assets/img/products/Trucker Cap/IMG_0428.JPG" class="img-fluid" alt="Custom trucker cap" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Trucker Cap/IMG_0428.JPG" class="glightbox preview-link" data-gallery="g-trucker" title="Trucker Cap"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Trucker Caps</h4><p>Mesh-back trucker caps — the classic promotional favorite.</p></div></div></div>
 
         <!-- Visors -->
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Visor/O1CN015hfnei1T3MLIi6BWR_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Visor/O1CN015hfnei1T3MLIi6BWR_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Visor/O1CN01SjX0Dd1T3MLJ5HYwN_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Visor/O1CN01SjX0Dd1T3MLJ5HYwN_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Visor/O1CN01fijA2Y1T3MLJ9LqGD_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Visor/O1CN01fijA2Y1T3MLJ9LqGD_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor">
-  <div class="product-card">
-    <div class="product-img"><img src="assets/img/products/Visor/O1CN01esx9Q629Mn27uILkM_!!2221549248054-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy">
-      <div class="product-overlay"><a href="assets/img/products/Visor/O1CN01esx9Q629Mn27uILkM_!!2221549248054-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div>
-    </div>
-    <div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div>
-  </div>
-</div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor"><div class="product-card"><div class="product-img"><img src="assets/img/products/Visor/O1CN015hfnei1T3MLIi6BWR_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Visor/O1CN015hfnei1T3MLIi6BWR_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor"><div class="product-card"><div class="product-img"><img src="assets/img/products/Visor/O1CN01SjX0Dd1T3MLJ5HYwN_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Visor/O1CN01SjX0Dd1T3MLJ5HYwN_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor"><div class="product-card"><div class="product-img"><img src="assets/img/products/Visor/O1CN01fijA2Y1T3MLJ9LqGD_!!2220683082326-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Visor/O1CN01fijA2Y1T3MLJ9LqGD_!!2220683082326-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div></div></div>
+<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item isotope-item filter-visor"><div class="product-card"><div class="product-img"><img src="assets/img/products/Visor/O1CN01esx9Q629Mn27uILkM_!!2221549248054-0-cib.jpg" class="img-fluid" alt="Custom sports visor" loading="lazy"><div class="product-overlay"><a href="assets/img/products/Visor/O1CN01esx9Q629Mn27uILkM_!!2221549248054-0-cib.jpg" class="glightbox preview-link" data-gallery="g-visor" title="Visor"><i class="bi bi-zoom-in"></i></a><a href="#contact" class="inquiry-btn">Inquiry</a></div></div><div class="product-info"><h4>Visors</h4><p>Open-top visors perfect for sports, outdoor and travel events.</p></div></div></div>
 
       </div><!-- End Portfolio Container -->
     </div>
   </div>
-</section><!-- /Products Section -->
+</section>
 
 <!-- Customization Section -->
 <section id="customization" class="customization section light-background">
@@ -783,51 +416,15 @@
   </div>
   <div class="container">
     <div class="row gy-4">
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-vector-pen"></i></div>
-          <h4>Embroidery &amp; 3D Puff</h4>
-          <p>Flat embroidery, raised 3D puff and 3D chenille for a premium, textured brand finish that lasts.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-printer"></i></div>
-          <h4>Screen &amp; Heat Printing</h4>
-          <p>Vibrant screen printing and heat transfer that pops on any fabric and stays colorfast wash after wash.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-tags"></i></div>
-          <h4>Woven Labels &amp; Tags</h4>
-          <p>Custom woven labels, hang tags, care labels and branded stickers to complete your retail packaging.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-palette2"></i></div>
-          <h4>Custom Fabrics &amp; Colors</h4>
-          <p>Cotton twill, polyester, denim, corduroy, wool and mesh — dyed to your exact Pantone color match.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-rulers"></i></div>
-          <h4>Fit &amp; Structure</h4>
-          <p>Structured, unstructured, low-profile, mid-profile, adjustable or fitted — engineered to your precise spec.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-        <div class="decor-item">
-          <div class="icon"><i class="bi bi-box2-heart"></i></div>
-          <h4>Custom Packaging</h4>
-          <p>Poly bags, kraft boxes, tissue paper and thank-you cards with your branding — ready for retail shelves.</p>
-        </div>
-      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="decor-item"><div class="icon"><i class="bi bi-vector-pen"></i></div><h4>Embroidery &amp; 3D Puff</h4><p>Flat embroidery, raised 3D puff and 3D chenille for a premium, textured brand finish that lasts.</p></div></div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="decor-item"><div class="icon"><i class="bi bi-printer"></i></div><h4>Screen &amp; Heat Printing</h4><p>Vibrant screen printing and heat transfer that pops on any fabric and stays colorfast wash after wash.</p></div></div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="decor-item"><div class="icon"><i class="bi bi-tags"></i></div><h4>Woven Labels &amp; Tags</h4><p>Custom woven labels, hang tags, care labels and branded stickers to complete your retail packaging.</p></div></div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400"><div class="decor-item"><div class="icon"><i class="bi bi-palette2"></i></div><h4>Custom Fabrics &amp; Colors</h4><p>Cotton twill, polyester, denim, corduroy, wool and mesh — dyed to your exact Pantone color match.</p></div></div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500"><div class="decor-item"><div class="icon"><i class="bi bi-rulers"></i></div><h4>Fit &amp; Structure</h4><p>Structured, unstructured, low-profile, mid-profile, adjustable or fitted — engineered to your precise spec.</p></div></div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600"><div class="decor-item"><div class="icon"><i class="bi bi-box2-heart"></i></div><h4>Custom Packaging</h4><p>Poly bags, kraft boxes, tissue paper and thank-you cards with your branding — ready for retail shelves.</p></div></div>
     </div>
   </div>
-</section><!-- /Customization Section -->
+</section>
 
     <!-- How We Work Section -->
 <section id="process" class="process section light-background">
@@ -837,57 +434,13 @@
   </div>
   <div class="container">
     <div class="row gy-4">
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="process-card">
-          <div class="process-img">
-            <img src="assets/img/Production process/1.jpg" class="img-fluid" alt="Design and sampling step" loading="lazy">
-            <span class="process-num">01</span>
-          </div>
-          <div>
-            <h4>Design &amp; Sampling</h4>
-            <p>Send us your logo or artwork. We create a free digital mockup within 24 hours and a physical sample in 7 days for your approval.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="process-card">
-          <div class="process-img">
-            <img src="assets/img/Production process/6.jpg" class="img-fluid" alt="Bulk production step" loading="lazy">
-            <span class="process-num">02</span>
-          </div>
-          <div>
-            <h4>Bulk Production</h4>
-            <p>Once approved, production starts. Our in-house team handles cutting, sewing, embroidery and decoration to your exact specification.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="process-card">
-          <div class="process-img">
-            <img src="assets/img/Production process/未标题-8 (1).jpg" class="img-fluid" alt="Quality inspection step" loading="lazy">
-            <span class="process-num">03</span>
-          </div>
-          <div>
-            <h4>Quality Inspection</h4>
-            <p>Every cap is checked 3 times — pre-production, in-line and final — covering construction, stitching, decoration and fit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="process-card">
-          <div class="process-img">
-            <img src="assets/img/Packing & Shipping/CNNNN_06.jpg" class="img-fluid" alt="Packing and shipping step" loading="lazy">
-            <span class="process-num">04</span>
-          </div>
-          <div>
-            <h4>Packing &amp; Shipping</h4>
-            <p>Caps are packed in your preferred packaging and shipped by air or sea. Tracking and shipping documents are sent the day of dispatch.</p>
-          </div>
-        </div>
-      </div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="process-card"><div class="process-img"><img src="assets/img/Production process/1.jpg" class="img-fluid" alt="Design and sampling step" loading="lazy"><span class="process-num">01</span></div><div><h4>Design &amp; Sampling</h4><p>Send us your logo or artwork. We create a free digital mockup within 24 hours and a physical sample in 7 days for your approval.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="process-card"><div class="process-img"><img src="assets/img/Production process/6.jpg" class="img-fluid" alt="Bulk production step" loading="lazy"><span class="process-num">02</span></div><div><h4>Bulk Production</h4><p>Once approved, production starts. Our in-house team handles cutting, sewing, embroidery and decoration to your exact specification.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="process-card"><div class="process-img"><img src="assets/img/Production process/未标题-8 (1).jpg" class="img-fluid" alt="Quality inspection step" loading="lazy"><span class="process-num">03</span></div><div><h4>Quality Inspection</h4><p>Every cap is checked 3 times — pre-production, in-line and final — covering construction, stitching, decoration and fit.</p></div></div></div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400"><div class="process-card"><div class="process-img"><img src="assets/img/Packing & Shipping/CNNNN_06.jpg" class="img-fluid" alt="Packing and shipping step" loading="lazy"><span class="process-num">04</span></div><div><h4>Packing &amp; Shipping</h4><p>Caps are packed in your preferred packaging and shipped by air or sea. Tracking and shipping documents are sent the day of dispatch.</p></div></div></div>
     </div>
   </div>
-</section><!-- /How We Work Section -->
+</section>
 
     <!-- Our Factory Section -->
 <section id="factory" class="factory section">
@@ -897,41 +450,18 @@
   </div>
   <div class="container">
     <div class="row gy-4 factory-stats" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-4 col-md-4">
-        <div class="factory-stat">
-          <div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2"></span><span class="suffix">+</span></div>
-          <p>Years of Experience</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <div class="factory-stat">
-          <div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="2"></span><span class="suffix">M+</span></div>
-          <p>Caps Produced</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <div class="factory-stat">
-          <div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="2"></span><span class="suffix">+</span></div>
-          <p>Brands Served</p>
-        </div>
-      </div>
+      <div class="col-lg-4 col-md-4"><div class="factory-stat"><div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2"></span><span class="suffix">+</span></div><p>Years of Experience</p></div></div>
+      <div class="col-lg-4 col-md-4"><div class="factory-stat"><div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="2"></span><span class="suffix">M+</span></div><p>Caps Produced</p></div></div>
+      <div class="col-lg-4 col-md-4"><div class="factory-stat"><div class="stat-num"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="2"></span><span class="suffix">+</span></div><p>Brands Served</p></div></div>
     </div>
     <div class="row gy-4 factory-gallery" data-aos="fade-up" data-aos-delay="200">
-      <div class="col-lg-3 col-md-6">
-        <div class="factory-img"><a href="assets/img/factory/1.jpg" class="glightbox"><img src="assets/img/factory/1.jpg" class="img-fluid" alt="BDBRIM factory cutting workshop" loading="lazy"></a></div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="factory-img"><a href="assets/img/factory/2.jpg" class="glightbox"><img src="assets/img/factory/2.jpg" class="img-fluid" alt="BDBRIM factory sewing line" loading="lazy"></a></div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="factory-img"><a href="assets/img/factory/5.jpg" class="glightbox"><img src="assets/img/factory/5.jpg" class="img-fluid" alt="BDBRIM embroidery department" loading="lazy"></a></div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="factory-img"><a href="assets/img/factory/4.jpg" class="glightbox"><img src="assets/img/factory/4.jpg" class="img-fluid" alt="BDBRIM factory quality control" loading="lazy"></a></div>
-      </div>
+      <div class="col-lg-3 col-md-6"><div class="factory-img"><a href="assets/img/factory/1.jpg" class="glightbox"><img src="assets/img/factory/1.jpg" class="img-fluid" alt="BDBRIM factory cutting workshop" loading="lazy"></a></div></div>
+      <div class="col-lg-3 col-md-6"><div class="factory-img"><a href="assets/img/factory/2.jpg" class="glightbox"><img src="assets/img/factory/2.jpg" class="img-fluid" alt="BDBRIM factory sewing line" loading="lazy"></a></div></div>
+      <div class="col-lg-3 col-md-6"><div class="factory-img"><a href="assets/img/factory/5.jpg" class="glightbox"><img src="assets/img/factory/5.jpg" class="img-fluid" alt="BDBRIM embroidery department" loading="lazy"></a></div></div>
+      <div class="col-lg-3 col-md-6"><div class="factory-img"><a href="assets/img/factory/4.jpg" class="glightbox"><img src="assets/img/factory/4.jpg" class="img-fluid" alt="BDBRIM factory quality control" loading="lazy"></a></div></div>
     </div>
   </div>
-</section><!-- /Factory Section -->
+</section>
 
     <!-- Reviews Section -->
 <section id="reviews" class="testimonials reviews section light-background">
@@ -958,7 +488,7 @@
       <div class="swiper-pagination"></div>
     </div>
   </div>
-</section><!-- /Reviews Section -->
+</section>
 
     <!-- Faq Section -->
 <section id="faq" class="faq section">
@@ -986,7 +516,7 @@
       </div>
     </div>
   </div>
-</section><!-- /Faq Section -->
+</section>
 
     <!-- Contact Section -->
 <section id="contact" class="contact section light-background">
@@ -1000,7 +530,6 @@
         <div class="contact-form-card">
           <h3 class="contact-form-title">Send Your Inquiry</h3>
           <p class="contact-form-sub">Fields marked with * are required. We usually reply within 12 hours.</p>
-          <!-- ===== 表单已移除 reCAPTCHA，确保国内正常提交 ===== -->
           <form action="https://formspree.io/f/mwleodwv" method="POST" id="inquiry-form">
             <input type="hidden" name="_next" value="index.html">
             <input type="hidden" name="_subject" value="New Inquiry from bdbrim.com">
@@ -1027,24 +556,15 @@
       <div class="col-lg-4">
         <div class="contact-info-card">
           <h3 class="contact-info-title"><i class="fa-solid fa-circle-info"></i> Contact Info</h3>
-          <div class="contact-info-item">
-            <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div><h4>Address</h4><p>Room 309, Building 8, Future Micro Villa, Lianchi District, Baoding City, Hebei Province, China 071000</p></div>
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
-            <div><h4>Phone</h4><p><a href="tel:+8615131222302">+86 151 3122 2302</a></p></div>
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div><h4>Email</h4><p><a href="mailto:carson@bdbrim.com">carson@bdbrim.com</a></p></div>
-          </div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div><div><h4>Address</h4><p>Room 309, Building 8, Future Micro Villa, Lianchi District, Baoding City, Hebei Province, China 071000</p></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div><div><h4>Phone</h4><p><a href="tel:+8615131222302">+86 151 3122 2302</a></p></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div><div><h4>Email</h4><p><a href="mailto:carson@bdbrim.com">carson@bdbrim.com</a></p></div></div>
           <a href="https://wa.me/8615131222302" target="_blank" class="btn btn-wa w-100"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
     </div>
   </div>
-</section><!-- /Contact Section -->
+</section>
 
   </main>
 
@@ -1115,7 +635,7 @@
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/8615131222302" target="_blank" class="wa-float" aria-label="Chat with BDBRIM on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 
-<!-- Vendor JS Files (全部使用国内可用的 CDN) -->
+<!-- Vendor JS Files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/purecounter/1.5.0/purecounter_vanilla.js"></script>
@@ -1123,10 +643,7 @@
 <script src="https://unpkg.com/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-
-<!-- Main JS File (BizPage template) -->
 <script src="assets/js/main.js"></script>
 
-<!-- ===== 已移除 Google reCAPTCHA，改用 Formspree 自带的反垃圾邮件机制 ===== -->
 </body>
 </html>
