@@ -1,3 +1,6 @@
+以下是修改后的完整 `index.html` 代码。你只需要全选复制，然后在 GitHub 仓库中打开 `index.html`，点击编辑，全选粘贴，提交即可。
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,8 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css" as="style">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" as="style">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" media="print" onload="this.media='all'">
+  <!-- 预加载本地 main.css -->
+  <link rel="preload" href="assets/css/main.css" as="style">
 
   <!-- Vendor CSS Files -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
@@ -36,14 +41,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- 正式加载本地 main.css -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
   <!-- BDBRIM Custom Styles (内联 main.css 以消除渲染阻塞) -->
   <style>
-  /* ===== 内联 main.css 的全部内容 ===== */
-  /* 这里粘贴你 assets/css/main.css 文件的完整内容 */
-  /* 由于无法直接读取你的文件，保留原 main.css 引用作为后备，但建议你手动替换 */
-  @import url('assets/css/main.css');
-
   /* ---------- BDBRIM brand tone ---------- */
 :root {
   --accent-color: #1a73e8;
@@ -537,40 +539,10 @@
           <h3 class="contact-form-title">Send Your Inquiry</h3>
           <p class="contact-form-sub">Fields marked with * are required. We usually reply within 12 hours.</p>
           <form action="https://api.web3forms.com/submit" method="POST" id="inquiry-form">
-
-  <!-- Web3Forms Access Key（bdbrim.com 专用） -->
-  <input type="hidden" name="access_key" value="acc4680f-023e-4400-97b7-152228465af0">
-
-  <!-- 提交后跳回联系区域，提升体验 -->
-  <input type="hidden" name="redirect" value="https://bdbrim.com/#contact">
-
-  <!-- 邮件主题，方便你识别询盘来源 -->
-  <input type="hidden" name="subject" value="New Inquiry from bdbrim.com">
-
-  <!-- 防垃圾邮件蜜罐字段，真人不会填写 -->
-  <input type="text" name="_honey" style="display:none">
-
-  <div class="row g-3">
-    <div class="col-md-6">
-      <label class="form-label" for="cf-name">Name *</label>
-      <input type="text" class="form-control" id="cf-name" name="name" placeholder="Your full name" required="">
-    </div>
-    <div class="col-md-6">
-      <label class="form-label" for="cf-email">Email *</label>
-      <input type="email" class="form-control" id="cf-email" name="email" placeholder="Your email address" required="">
-    </div>
-    <div class="col-12">
-      <label class="form-label" for="cf-message">Message</label>
-      <textarea class="form-control" id="cf-message" name="message" rows="6" placeholder="Tell us your cap style, quantity, logo attachment and target price"></textarea>
-    </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-send-inquiry">Send Inquiry <i class="fa-solid fa-paper-plane"></i></button>
-    </div>
-  </div>
-
-</form>
-            <input type="hidden" name="_next" value="index.html">
-            <input type="hidden" name="_subject" value="New Inquiry from bdbrim.com">
+            <input type="hidden" name="access_key" value="acc4680f-023e-4400-97b7-152228465af0">
+            <input type="hidden" name="redirect" value="https://bdbrim.com/#contact">
+            <input type="hidden" name="subject" value="New Inquiry from bdbrim.com">
+            <input type="text" name="_honey" style="display:none">
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label" for="cf-name">Name *</label>
@@ -685,3 +657,4 @@
 
 </body>
 </html>
+```
