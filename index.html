@@ -53,7 +53,44 @@
   --nav-hover-color: #1a73e8;
   --nav-dropdown-hover-color: #1a73e8;
 }
+/* 修复导航栏 CLS：固定高度，保持透明背景 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;  /* 固定高度，防止布局偏移 */
+  background: transparent;  /* 保持透明，不修改原有设计 */
+}
 .header .logo img { max-height: 38px; margin-right: 10px; }
+
+/* 修复 WhatsApp 按钮 CLS：优化渲染 */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 6px 18px rgba(37,211,102,.45);
+  transition: .3s;
+  transform: translateZ(0);
+  will-change: transform;
+}
+.wa-float:hover { transform: translateY(-4px); color: #fff; background: #1ebe5b; }
+
+/* 修复 Hero 标题 CLS：预留最小高度 */
+.hero .hero-content h2 {
+  min-height: 1.2em;  /* 防止字体加载或渲染导致的偏移 */
+}
 
 /* ---------- Product Cards ---------- */
 .products .product-card { background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; overflow: hidden; height: 100%; transition: box-shadow .3s ease, transform .3s ease; }
@@ -84,8 +121,19 @@
 
 /* ---------- Factory stats + gallery ---------- */
 .factory-stats .factory-stat { text-align: center; background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 34px 20px; box-shadow: 0 6px 18px rgba(0,0,0,.05); height: 100%; }
-.factory-stats .factory-stat .stat-num { font-size: 46px; font-weight: 700; color: var(--accent-color); font-family: var(--heading-font); line-height: 1; }
+.factory-stats .factory-stat .stat-num {
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-family: var(--heading-font);
+  line-height: 1;
+  min-width: 100px;
+  display: inline-block;
+}
 .factory-stats .factory-stat .stat-num .suffix { font-size: 28px; }
+.factory-stats .factory-stat .stat-num .counter {
+  font-variant-numeric: tabular-nums;
+}
 .factory-stats .factory-stat p { margin: 10px 0 0; font-family: var(--heading-font); font-weight: 600; font-size: 15px; color: var(--heading-color); }
 .factory-gallery .factory-img { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 8px 22px rgba(0,0,0,.08); }
 .factory-gallery .factory-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
@@ -101,10 +149,6 @@
 .review-card .review-author h4 { font-size: 15px; font-weight: 700; margin: 0 0 2px; color: var(--heading-color); }
 .review-card .review-role { font-size: 12px; color: color-mix(in srgb, var(--default-color), transparent 30%); }
 .reviews .swiper-slide { height: auto; padding: 8px; }
-
-/* ---------- Floating WhatsApp button ---------- */
-.wa-float { position: fixed; bottom: 24px; left: 24px; z-index: 999; width: 54px; height: 54px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 6px 18px rgba(37,211,102,.45); transition: .3s; }
-.wa-float:hover { transform: translateY(-4px); color: #fff; background: #1ebe5b; }
 
 /* ---------- Customization cards ---------- */
 .decor-item { background: var(--surface-color); border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 26px 22px; height: 100%; box-shadow: 0 6px 18px rgba(0,0,0,.05); transition: .3s; }
