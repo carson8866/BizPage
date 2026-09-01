@@ -1,37 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /forms/
+Disallow: /starter-page.html
+Disallow: /index-original-backup.html
+Disallow: /*?
 
-  <!-- 首页（最重要） -->
-  <url>
-       <loc>https://bdbrim.com/</loc>
-       <lastmod>2026-09-01</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>1.0000</priority>
-  </url>
+User-agent: GPTBot
+Allow: /
 
-  <!-- 博客列表页 -->
-  <url>
-       <loc>https://bdbrim.com/blog.html</loc>
-       <lastmod>2026-09-01</lastmod>
-       <changefreq>weekly</changefreq>
-       <priority>0.8000</priority>
-  </url>
+User-agent: PerplexityBot
+Allow: /
 
-  <!-- 服务详情页 -->
-  <url>
-       <loc>https://bdbrim.com/service-details.html</loc>
-       <lastmod>2026-09-01</lastmod>
-       <changefreq>weekly</changefreq>
-       <priority>0.8000</priority>
-  </url>
+User-agent: OAI-SearchBot
+Allow: /
 
-  <!-- 作品集/项目详情页 -->
-  <url>
-       <loc>https://bdbrim.com/portfolio-details.html</loc>
-       <lastmod>2026-09-01</lastmod>
-       <changefreq>weekly</changefreq>
-       <priority>0.8000</priority>
-  </url>
+User-agent: ClaudeBot
+Allow: /
 
-</urlset>
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://bdbrim.com/sitemap.xml
