@@ -16,6 +16,33 @@
   })(window,document,'script','dataLayer','GTM-KWCMP87L');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- ===== 新增：AI 搜索信任密码 (Organization + WebSite) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BDBRIM",
+    "description": "Factory-direct custom cap manufacturer in China.",
+    "url": "https://bdbrim.com/",
+    "telephone": "+86 151 3122 2302",
+    "email": "carson@bdbrim.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Baoding",
+      "addressRegion": "Hebei",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BDBRIM",
+    "url": "https://bdbrim.com/"
+  }
+  </script>
+
   <!-- ===== 字体优化：移除 Google Fonts，改用系统原生字体（国内秒开） ===== -->
   <style>
     body {
@@ -47,7 +74,7 @@
 
   <!-- BDBRIM Custom Styles (内联 main.css 以消除渲染阻塞) -->
   <style>
-  /* ---------- BDBRIM brand tone ---------- */
+  /* ---------- BDBRIM brand tone (原色未变) ---------- */
 :root {
   --accent-color: #1a73e8;
   --nav-hover-color: #1a73e8;
@@ -203,7 +230,8 @@
 /* ---------- Mobile fine-tuning ---------- */
 @media (max-width: 575px) {
   .header .logo img { max-height: 30px; }
-  .header .logo h1 { font-size: 23px; }
+  /* 修改：适配降级的 span 保持原字号 */
+  .header .logo span { font-size: 23px; }
   .products .isotope-container .portfolio-item { flex: 0 0 50%; max-width: 50%; }
   .products .product-info { padding: 12px 12px 14px; }
   .products .product-info h4 { font-size: 15px; }
@@ -238,7 +266,8 @@
   <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
     <a href="index.html" class="logo d-flex align-items-center">
       <img src="assets/img/logo/logo-white.png" alt="BDBRIM logo">
-      <h1 class="sitename">BDBRIM</h1>
+      <!-- 修改：H1 改为 span，修复Bing报错，保持原样式 -->
+      <span class="sitename">BDBRIM</span>
     </a>
     <nav id="navmenu" class="navmenu">
       <ul>
@@ -263,7 +292,8 @@
   <img src="assets/img/banner/3.jpg" alt="BDBRIM custom cap factory - hero banner">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h2>OEM &amp; ODM Custom Hat Manufacturer</h2>
+    <!-- 修改：H2 改为 H1，让页面只有一个主标题，解决Bing报错 -->
+    <h1>OEM &amp; ODM Custom Hat Manufacturer</h1>
     <p>Factory-direct customized caps from our own facility in Baoding, China. MOQ 50 pcs, free digital mockup in 24 hours, physical sample in 7 days, full production in 15 days.</p>
     <a href="#products" class="btn-get-started">Explore Our Products</a>
     <a href="#contact" class="btn-get-started">Get A Free Quote</a>
@@ -367,7 +397,8 @@
 
     <!-- Call To Action Section -->
 <section id="call-to-action" class="call-to-action section dark-background">
-  <img src="assets/img/factory/5.jpg" alt="" loading="lazy">
+  <!-- 修改：补充了Alt属性以解决Bing报错 -->
+  <img src="assets/img/factory/5.jpg" alt="BDBRIM factory background" loading="lazy">
   <div class="container">
     <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
       <div class="col-xl-10">
@@ -773,8 +804,10 @@
     });
   });
 </script>
+  
+  <!-- 防垃圾：2秒内提交静默拦截 -->
   <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
       // 自动匹配所有指向 Web3Forms 的表单
       var form = document.querySelector('form[action*="web3forms"]');
       if (!form) return;
@@ -789,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     });
-    </script>
+  </script>
 
 </body>
 </html>
